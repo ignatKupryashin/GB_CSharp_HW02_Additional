@@ -33,7 +33,31 @@ void Task01()
 
 //Задача 2. На вход подаются год, номер месяца и день рождения человека, Определить возраст человека на момент 1 июля 2022 года.
 
+void Task02()
+{
+    Console.WriteLine(" ");//пустая строка для красоты
+    Console.WriteLine("Данная программа определяет возраст человека на момент 1 июля 2022 года по введённой дате");
+    Console.WriteLine(" ");//пустая строка для красоты
 
+    //блок ввода данных
+    Console.Write("Введите год рождения: ");
+    int year = Convert.ToInt32(Console.ReadLine()); // вводим год
+    Console.Write("Введите месяц рождения: ");
+    int month = Convert.ToInt32(Console.ReadLine()); // вводим месяц
+    Console.Write("Введите день рождения: ");
+    int day = Convert.ToInt32(Console.ReadLine()); // вводим день
+    DateTime Birthday = new DateTime(year, month, day);
+    Console.WriteLine("Вы ввели дату: " + Birthday.ToShortDateString());
+    DateTime Currentday = new DateTime(2022, 7, 1);
+    Console.WriteLine("Проверяем возраст на дату: " + Currentday.ToShortDateString());
+
+    //блок расчёта
+
+    TimeSpan answer = Currentday.Subtract(Birthday);
+    Console.WriteLine("Ответ: возраст в годах: " + Math.Round((answer.TotalDays / 365.25), 0));
+
+    Console.WriteLine(" ");//пустая строка для красоты
+}
 
 
 
@@ -48,12 +72,12 @@ void Task03()
     double balance = 1000;
     double percent = 0.015;
     Console.Write("Введите колличество месяцев: ");
-    int mounths = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Колличество месяцев: " + mounths + ". " + balance + " рублей превратится в ");
-    while (mounths > 0)
+    int months = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Колличество месяцев: " + months + ". " + balance + " рублей превратится в ");
+    while (months > 0)
     {
         balance = balance + balance * percent;
-        mounths--;
+        months--;
     };
     Console.Write(Math.Round(balance, 2) + " рублей."); //выводим сумму с округлением до копеек
     Console.WriteLine(" ");//пустая строка для красоты
@@ -114,7 +138,7 @@ void Task04()
 
 
 //Запуск заданий. При желании, любое можно закомментировать.
-//Task01();
-//Task02();
-//Task03();
-//Task04();
+Task01();
+Task02();
+Task03();
+Task04();
