@@ -49,19 +49,68 @@ void Task03()
     double percent = 0.015;
     Console.Write("Введите колличество месяцев: ");
     int mounths = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Через " + mounths + " месяцев " + balance + " рублей превратится в ");
+    Console.Write("Колличество месяцев: " + mounths + ". " + balance + " рублей превратится в ");
     while (mounths > 0)
     {
         balance = balance + balance * percent;
         mounths--;
     };
-    Console.Write(Math.Round(balance, 2) + " рублей.");
+    Console.Write(Math.Round(balance, 2) + " рублей."); //выводим сумму с округлением до копеек
     Console.WriteLine(" ");//пустая строка для красоты
     Console.WriteLine(" ");//пустая строка для красоты
 
 };
 
 //Задача 4. Дано натуральное число, в котором все цифры различны. Определить, какая цифра расположена в нем левее: максимальная или минимальная.
+
+
+void Task04()
+{
+    Console.WriteLine(" ");//пустая строка для красоты
+    Console.WriteLine("Данная программа определяет минимальнае или максимальная цифра находится левее во введённом числе");
+    Console.WriteLine(" ");//пустая строка для красоты
+    Console.Write("Введите натуральное число без повторяющихся цифр: ");
+    int number = Convert.ToInt32(Console.ReadLine());
+    int indexMax = 0;//месторасположение максимального элемента
+    int indexMin = 0;//месторасположение минимального элемента
+    int max = number % 10;
+    int min = max;
+    if (number < 10)
+    {
+        Console.WriteLine("Число состоит из одной цифры. Максимальное и минимальное значение находятся на одной позиции");
+    }
+    else
+    {
+        number /= 10;
+        int index = 0;
+        int curentnumber = 0;
+        while (number > 0) //проходимся по всему числу (отсекаем каждую цифру при помощи деления на 10)
+        {
+            curentnumber = number % 10;
+            if (curentnumber > max)
+            {
+                max = curentnumber;
+                indexMax = index;
+            }
+            else if (curentnumber < min)
+            {
+                min = curentnumber;
+                indexMin = index;
+            }
+            number /= 10;
+            index++;
+        }
+        if (indexMax > indexMin)
+        {
+            Console.WriteLine("Максимальная цифра находится левее минимальной");
+        }
+        else
+        {
+            Console.WriteLine("Минимальная цифра находится левее максимальной");
+        }
+    }
+    Console.WriteLine(" ");//пустая строка для красоты
+}
 
 
 //Запуск заданий. При желании, любое можно закомментировать.
